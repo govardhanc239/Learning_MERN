@@ -32,7 +32,7 @@ function compareKeysAndValues(keys1, keys2, data1, data2) {
 }
 // URLs of the APIs
 const url1 = 'https://dev-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant12-thailand/wp-json/wp/v2/en/categories?category_names=rsa';
-const url2 = 'https://qa-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant12-thailand/wp-json/wp/v2/en/categories?category_names=rsa';
+const url2 = 'https://uat-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant12-thailand/wp-json/wp/v2/en/categories?category_names=rsa';
 
 (async () => {
     try {
