@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: sans-serif;
+  padding: 2rem ;
 }
 
 .App-logo {
@@ -35,4 +37,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.product-grid{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-radius: 10px;
+}
+.card{
+  border: 2px solid #282c34;
+  padding: 1rem;
+  width: 150px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+
+}
+.card:hover {
+  background-color: #f0f0f0;
+}
+.modal{
+  position:fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1rem;
+  border: 2px solid #333;
+  z-index: 10;
 }
