@@ -1,12 +1,12 @@
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PatientTermsAndConditions from './roche-page-alignment';
+import IconDataTable from './roche-icon-comparision';
 
 
 function App() {
   return (
     <div className="App">
-      <PatientTermsAndConditions/>
+      <IconDataTable/>
     </div>
   );
 }

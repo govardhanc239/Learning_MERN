@@ -85,7 +85,7 @@
 // export default IconDataTable;
 
 
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 
 function IconDataTable() {
   const [devIcons, setDevIcons] = useState({}); 
@@ -110,14 +110,79 @@ const fetchAndCompare = async(envName,setter,currentCache)=>{
     const jsonData = await response.json()
     const newData = jsonData.imagesandicons || {};
     const oldData = currentCache[envName] || {};
-  }
+
+    const isSame = JSON.stringify(newData)=== JSON.stringify(oldData);
+    if(!isSame){
+      setter(newData);
+      localStorage.setItem(storageKey,JSON.stringify({
+        ...currentCache,
+        [envName]: newData
+      }))
+    }else{
+      setter(oldData);
+
+    }
+  }catch(error){
+    console.error(`Error fetching data from ${envName}:`, error);
+    }
 
 }
+useEffect(()=>{
+  const cached = localStorage.getItem(storageKey);
+  const parsedCache = cached ? JSON.parse(cached) : {};
+  envs.forEach(({ name, setter }) => {
+    fetchAndCompare(name, setter, parsedCache);
+  });
+},[envs]);
+const allKeys = Array.from(new Set([
+  ...Object.keys(devIcons),
+  ...Object.keys(qaIcons),
+  ...Object.keys(uatIcons),
+  ...Object.keys(prodIcons)
+]));
+
+const filteredKeys = searchTerm
+  ? allKeys.filter(key => key.toLowerCase().includes(searchTerm.toLowerCase()))
+  : allKeys;
 
 
   return (
-    <div>index</div>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', flexDirection: 'column' }}>
+    <h2 style={{ textAlign: 'center' }}>API Data Comparison</h2>
+    <input
+      type="text"
+      placeholder="Search by key"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      style={{ marginBottom: '20px', padding: '5px', width: '300px' }}
+    />
+    <h3>Total Count: {allKeys.length} {searchTerm && `| Search Count: ${filteredKeys.length}`}</h3>
+    <table border="1" style={{ backgroundColor: "yellow" }}>
+      <thead>
+        <tr>
+          <th>Serial No</th>
+          <th>Key</th>
+          <th>DEV</th>
+          <th>QA</th>
+          <th>UAT</th>
+          <th>APAC</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredKeys.map((key, index) => (
+          <tr key={key}>
+            <td>{index + 1}</td>
+            <td>{key}</td>
+            <td>{devIcons[key] ? <img src={devIcons[key]} alt={key} width="50" /> : 'N/A'}</td>
+            <td>{qaIcons[key] ? <img src={qaIcons[key]} alt={key} width="50" /> : 'N/A'}</td>
+            <td>{uatIcons[key] ? <img src={uatIcons[key]} alt={key} width="50" /> : 'N/A'}</td>
+            <td>{prodIcons[key] ? <img src={prodIcons[key]} alt={key} width="50" /> : 'N/A'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
   )
 }
 
-export default index
+export default IconDataTable
