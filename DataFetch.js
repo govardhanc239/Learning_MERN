@@ -32,7 +32,7 @@ async function fetchAndSaveToExcel(apiUrl) {
     });
 
     // Write the workbook to a file
-    const filename = "MY-web-Icons-1.xlsx";
+    const filename = "MY-prelogin-data.xlsx";
     XLSX.writeFile(workbook, filename);
     console.log(`Excel file saved as ${filename}`);
   } catch (error) {
@@ -41,7 +41,7 @@ async function fetchAndSaveToExcel(apiUrl) {
 }
 // API URL
 const apiUrl =
-  "https://qa-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant7/wp-json/wp/v2/en/categories?category_names=imagesandicons";
+  "https://dev-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant7/wp-json/wp/v2/en/prelogincategories?category_names=errormsg,login";
 
 // Call the function with sorting in ascending order
 fetchAndSaveToExcel(apiUrl);

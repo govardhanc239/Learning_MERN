@@ -29,7 +29,7 @@ function compareJSON(apiData, realData, prefix = '') {
 }
 
 // Replace with your API URL
-const apiUrl = "https://uat-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant11-austrlia/wp-json/wp/v2/en/categories?category_names=imagesandicons";
+const apiUrl = "https://qa-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant11-austrlia/wp-json/wp/v2/en/categories?category_names=imagesandicons";
 
 
 async function compareData() {
