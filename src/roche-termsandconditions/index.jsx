@@ -6,9 +6,9 @@ function TermsAlignment() {
   const [error, setError] = useState(null);
 
   const API_URL =
-    "https://dev-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant7/wp-json/roche/v1/pages/en/hcp-new-terms";
+    "https://dev-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant7/wp-json/roche/v1/pages/en/patient-contact-us";
   const JWT_TOKEN =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Rldi1jbXMtZGFzaGJvYXJkLnBhdGllbnRjYXJlc29sdXRpb24uY29tL1JvY2hlTXVsdGlTaXRlL3RlbmFudDciLCJpYXQiOjE3NDM2NjU1NjQsIm5iZiI6MTc0MzY2NTU2NCwiZXhwIjoxNzQ0MjcwMzY0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI5In19fQ.wWkU9HJpOA19xRnuMCvGuRplyrNXKfidisN0stM4fDw";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Rldi1jbXMtZGFzaGJvYXJkLnBhdGllbnRjYXJlc29sdXRpb24uY29tL1JvY2hlTXVsdGlTaXRlL3RlbmFudDciLCJpYXQiOjE3NDY2MDk4NjcsIm5iZiI6MTc0NjYwOTg2NywiZXhwIjoxNzQ3MjE0NjY3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI5In19fQ.x_x5nyqL6Yb13fukzCtfnpZUnDeWdP67pEhdiwO-cbU";
 
   useEffect(() => {
     const fetchTerms = async () => {

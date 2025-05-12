@@ -103,7 +103,7 @@ function IconDataTable() {
 
   const storageKey = 'icons_cache';
 const fetchAndCompare = async(envName,setter,currentCache)=>{
-  const api = `https://${envName}-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant9-singapore/wp-json/wp/v2/en/categories?category_names=imagesandicons`;
+  const api = `https://${envName}-cms-dashboard.patientcaresolution.com/RocheMultiSite/tenant7/wp-json/wp/v2/en/categories?category_names=imagesandicons`;
 
   try{
     const response = await fetch(api);
@@ -133,7 +133,7 @@ useEffect(()=>{
   envs.forEach(({ name, setter }) => {
     fetchAndCompare(name, setter, parsedCache);
   });
-},[envs]);
+},[]);
 const allKeys = Array.from(new Set([
   ...Object.keys(devIcons),
   ...Object.keys(qaIcons),
@@ -157,7 +157,7 @@ const filteredKeys = searchTerm
       style={{ marginBottom: '20px', padding: '5px', width: '300px' }}
     />
     <h3>Total Count: {allKeys.length} {searchTerm && `| Search Count: ${filteredKeys.length}`}</h3>
-    <table border="1" style={{ backgroundColor: "yellow" }}>
+    <table border="2" style={{ backgroundColor: "yellow", padding: "10px", borderRadius: "5px" }}>
       <thead>
         <tr>
           <th>Serial No</th>
@@ -184,5 +184,4 @@ const filteredKeys = searchTerm
   </div>
   )
 }
-
 export default IconDataTable
